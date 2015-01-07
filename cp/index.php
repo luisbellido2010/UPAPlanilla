@@ -16,13 +16,15 @@
 
         <script src="js/setup.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function() {
                 setupLeftMenu();
                 setSidebarHeight();
+                enviarpeticion();
             });
-
-            function format() {
-                
+            function enviarpeticion() {
+                $("#btnEnvia").click(function() {
+                    alert("Handler for .click() called.");
+                });
             }
         </script>
     </head>
@@ -72,7 +74,6 @@
                         </ul>
                     </li>
                     <li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>
-
                 </ul>
             </div>
             <div class="clear">
@@ -135,16 +136,14 @@
                     <h2>
                         Product Sales</h2>
                     <div class="block">
-                        <div id="chart1">
-                        </div>
+                        <input type="button" id="btnEnvia" value="Enviar">
+                        <input type="text" id="txtrpta">
                     </div>
                 </div>
             </div>
-            <div class="clear">
-            </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear">
-        </div>
+        <div class="clear"></div>
         <div id="site_info">
             <p>
                 Copyright <a href="http://www.templatescreme.com">BlueWhale Admin</a>. All Rights Reserved.
