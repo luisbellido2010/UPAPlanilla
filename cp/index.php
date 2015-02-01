@@ -16,13 +16,13 @@
 
         <script src="js/setup.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
+            $(document).ready(function () {
                 setupLeftMenu();
                 setSidebarHeight();
                 enviarpeticion();
             });
             function enviarpeticion() {
-                $("#btnEnvia").click(function() {
+                $("#btnEnvia").click(function () {
                     alert("Handler for .click() called.");
                 });
             }
@@ -82,49 +82,10 @@
                 <div class="box sidemenu">
                     <div class="block" id="section-menu">
                         <ul class="section menu">
-                            <li><a class="menuitem">Menu 1</a>
+                            <li>
+                                <a class="menuitem">Mantenimiento</a>
                                 <ul class="submenu">
-                                    <li><a>Submenu 1</a> </li>
-                                    <li><a>Submenu 2</a> </li>
-
-                                </ul>
-                            </li>
-                            <li><a class="menuitem">Menu 2</a>
-                                <ul class="submenu">
-                                    <li><a>Submenu 1</a> </li>
-                                    <li><a>Submenu 2</a> </li>
-                                    <li><a>Submenu 3</a> </li>
-                                    <li><a>Submenu 4</a> </li>
-                                    <li><a>Submenu 5</a> </li>
-                                </ul>
-                            </li>
-                            <li><a class="menuitem">Menu 3</a>
-                                <ul class="submenu">
-                                    <li><a>Submenu 1</a> </li>
-                                    <li><a>Submenu 2</a> </li>
-                                    <li><a>Submenu 3</a> </li>
-                                    <li><a>Submenu 4</a> </li>
-                                    <li><a>Submenu 5</a> </li>
-                                    <li><a>Submenu 1</a> </li>
-                                    <li><a>Submenu 2</a> </li>
-                                    <li><a>Submenu 3</a> </li>
-                                    <li><a>Submenu 4</a> </li>
-                                    <li><a>Submenu 5</a> </li>
-                                </ul>
-                            </li>
-                            <li><a class="menuitem">Menu 4</a>
-                                <ul class="submenu">
-                                    <li><a>Submenu 1</a> </li>
-                                    <li><a>Submenu 2</a> </li>
-                                    <li><a>Submenu 3</a> </li>
-                                    <li><a>Submenu 4</a> </li>
-                                    <li><a>Submenu 5</a> </li>
-                                    <li><a>Submenu 6</a> </li>
-                                    <li><a>Submenu 7</a> </li>
-                                    <li><a>Submenu 8</a> </li>
-                                    <li><a>Submenu 9</a> </li>
-                                    <li><a>Submenu 10</a> </li>
-
+                                    <li><a href="view/personal.php" target="ifPagina" >Personal</a> </li>
                                 </ul>
                             </li>
                         </ul>
@@ -132,15 +93,9 @@
                 </div>
             </div>
             <div class="grid_10">
-                <div class="box round first">
-                    <h2>
-                        Product Sales</h2>
-                    <div class="block">
-                        <input type="button" id="btnEnvia" value="Enviar">
-                        <input type="text" id="txtrpta">
-                    </div>
-                </div>
+                <iframe id="ifPagina" name="ifPagina" scrolling="auto" frameborder="0" style="width:100%;height:100%;"></iframe>
             </div>
+
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
