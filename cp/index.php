@@ -3,106 +3,102 @@
     <head>
         <meta charset="UTF-8">
         <title>UPA</title>
-        <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="css/text.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="css/grid.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="css/layout.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="css/nav.css" media="screen" />
-        <!--SCRIPT-->
-        <script src="js/jquery-1.6.4.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/jquery-ui/jquery.ui.core.min.js"></script>
-        <script src="js/jquery-ui/jquery.ui.widget.min.js" type="text/javascript"></script>
-        <script src="js/jquery-ui/jquery.ui.accordion.min.js" type="text/javascript"></script>
-
-        <script src="js/setup.js" type="text/javascript"></script>
+        <?php
+        $cad = '';
+        include './view/plugins.php';
+        ?>
         <script type="text/javascript">
-            $(document).ready(function () {
-                setupLeftMenu();
-                setSidebarHeight();
-                enviarpeticion();
-            });
-            function enviarpeticion() {
-                $("#btnEnvia").click(function () {
-                    alert("Handler for .click() called.");
-                });
-            }
+            //data-options="selected:true" PARA INDICAR SI SE DEBE SELECCIONAR UN TAB.
         </script>
+        <style type="text/css">
+            #branding {
+                font-weight:normal;
+                text-align:left;
+                padding:2em 1em 1.6em 1em;
+                margin-bottom:0;
+                background:url(img/header-repeat.jpg) repeat-x;
+            }
+
+            .header-repeat{background:url(img/header-repeat.jpg) repeat-x;}
+
+            #branding a{color:#A1EAFF; font-weight:normal;}
+            #branding a:hover{color:#fff;}
+
+            #branding a:before{content:" | "; color:#fff;}
+
+            #branding ul, #branding ul li{margin:0px; padding:0px; }
+            #branding li{padding:0px 0px 0px 0px !important;}
+            .top-10{margin-top:-10px;}
+
+            .floatleft{float:left;}
+            .floatright{float:right;}
+            .fontwhite{color:#fff;}
+            .small{font-size:9px;}
+            .inline-ul li{display:inline; color:#fff;}
+            .marginleft10{margin-left:10px;}
+            .grey{color:#C2C2C2;}
+            .titlelogo{
+                padding-left: 10px;
+                font-weight: bold;
+                font-size: 18px;
+            }
+        </style>
     </head>
-    <body>
-        <div class="container_12">
-            <div class="grid_12 header-repeat">
-                <div id="branding">
+    <body class="easyui-layout">
+        <div data-options="region:'north',border:false" style="height:55px; background: none repeat scroll 0% 0% #2E5E79;">
+            <div id="branding">
+                <div class="floatleft">
+                    <img src="js/jqueryeasy/themes/icons/system.png" alt="Logo" />
+                    <label class="grey titlelogo">MI EMPRESA</label>
+                </div>
+                <div class="floatright">
                     <div class="floatleft">
-                        <img src="img/logo.png" alt="Logo" /></div>
-                    <div class="floatright">
-                        <div class="floatleft">
-                            <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
-                        <div class="floatleft marginleft10">
-                            <ul class="inline-ul floatleft">
-                                <li>Hello Admin</li>
-                                <li><a href="#">Config</a></li>
-                                <li><a href="#">Logout</a></li>
-                            </ul>
-                            <br />
-                            <span class="small grey">Last Login: 3 hours ago</span>
+                        <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
+                    <div class="floatleft marginleft10">
+                        <ul class="inline-ul floatleft">
+                            <li>Bienvenido - Pancrasio</li>
+                            <li><a href="#">Configuración</a></li>
+                            <li><a href="#">Salir</a></li>
+                        </ul>
+                        <br />
+                        <span class="small grey">Cantidad de Usuarios conectados: 1</span>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        
+        <div data-options="region:'west',split:false" title="Opciones Generales" style="width:165px;">
+            <div class="easyui-accordion" data-options="fit:true,border:false">
+                <div title="Mantenimientos" style="padding:10px;" data-options="selected:true">
+                    <a href="javascript:void(0);" src="view/personal.php" class="cs-navi-tab">Personal</a></p>
+                </div>
+                <div title="Procesos" style="padding:10px;">
+                    content2
+                </div>
+                <div title="Consultas" style="padding:10px">
+                    content3
+                </div>
+                <div title="Reportes" style="padding:10px">
+                    content4
+                </div>
+                <div title="Seguridad" style="padding:10px">
+                    content5
+                </div>
+            </div>
+        </div>
+        <div id="mainPanle" region="center" border="true" border="false">
+            <div id="myContendPage" class="easyui-tabs"  fit="true" border="false" >
+                <div title="Bienvenido">
+                    <div class="cs-home-remark">
+                        <div style="padding-left: 5px;">
+                            <p>Mi página de inicio.</p>
                         </div>
                     </div>
-                    <div class="clear">
-                    </div>
                 </div>
             </div>
-            <div class="clear">
-            </div>
-            <div class="grid_12">
-                <ul class="nav main">
-                    <li class="ic-dashboard"><a href="dashboard.html"><span>Dashboard</span></a> </li>
-                    <li class="ic-form-style"><a href="javascript:"><span>Controls</span></a>
-                        <ul>
-                            <li><a href="form-controls.html">Forms</a> </li>
-                            <li><a href="buttons.html">Buttons</a> </li>
-                            <li><a href="form-controls.html">Full Page Example</a> </li>
-                            <li><a href="table.html">Page with Sidebar Example</a> </li>
-                        </ul>
-                    </li>
-                    <li class="ic-typography"><a href="typography.html"><span>Typography</span></a></li>
-                    <li class="ic-charts"><a href="charts.html"><span>Charts & Graphs</span></a></li>
-                    <li class="ic-grid-tables"><a href="table.html"><span>Data Table</span></a></li>
-                    <li class="ic-gallery dd"><a href="javascript:"><span>Image Galleries</span></a>
-                        <ul>
-                            <li><a href="image-gallery.html">Pretty Photo</a> </li>
-                            <li><a href="gallery-with-filter.html">Gallery with Filter</a> </li>
-                        </ul>
-                    </li>
-                    <li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>
-                </ul>
-            </div>
-            <div class="clear">
-            </div>
-            <div class="grid_2">
-                <div class="box sidemenu">
-                    <div class="block" id="section-menu">
-                        <ul class="section menu">
-                            <li>
-                                <a class="menuitem">Mantenimiento</a>
-                                <ul class="submenu">
-                                    <li><a href="view/personal.php" target="ifPagina" >Personal</a> </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="grid_10">
-                <iframe id="ifPagina" name="ifPagina" scrolling="auto" frameborder="0" style="width:100%;height:100%;"></iframe>
-            </div>
-
-            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-        <div id="site_info">
-            <p>
-                Copyright <a href="http://www.templatescreme.com">BlueWhale Admin</a>. All Rights Reserved.
-            </p>
-        </div>
+        <div region="south" border="false" id="south"><center>Todos los Derechos Reservados © 2014</center></div>
     </body>
 </html>
