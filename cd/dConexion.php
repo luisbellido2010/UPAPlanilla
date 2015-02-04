@@ -21,8 +21,16 @@ class dConexion {
         throw new Exception($error);
     }
 
+    protected function getQueryList($sql) {
+        $this->stmt = mysql_query($sql, $this->cone)
+                or
+                $this->throw_sqlex(mysql_error());
+        return $this->stmt;
+    }
+
     protected function getQuery($sql) {
-        $this->stmt = @mysql_query($sql, $this->cone)
+        mysql_query("SET NAMES 'utf8'");
+        $this->stmt = mysql_query($sql, $this->cone)
                 or
                 $this->throw_sqlex(mysql_error());
         return $this->stmt;

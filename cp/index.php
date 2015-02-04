@@ -14,45 +14,45 @@ require_once '../cn/nMenu.php';
             $(function () {
                 $('.cs-navi-tab').click(function () {
                     var $this = $(this);
-                    var href = $this.attr('src');
+                    var url = $this.attr('src');
                     var title = $this.attr('title');
-                    addTab(title, href);
-                });
-
-            });
-            function addTab(title, url) {
-                if ($('#myContendPage').tabs('exists', title)) {
-                    $('#myContendPage').tabs('select', title);
-                } else {
-                    var content = createFrame(url);
-                    $('#myContendPage').tabs('add', {
-                        title: title,
-                        content: content,
-                        closable: true,
-                        tools: [{
-                                iconCls: 'icon-mini-refresh',
-                                handler: function () {
-                                    var currTab = $('#myContendPage').tabs('getSelected');
-                                    var url = $(currTab.panel('options').content).attr('src');
-                                    if (url != undefined && currTab.panel('options').title != 'Bienvenido') {
-                                        $('#myContendPage').tabs('update', {
-                                            tab: currTab,
-                                            options: {
-                                                content: createFrame(url)
-                                            }
-                                        })
+                    if ($('#myContendPage').tabs('exists', title)) {
+                        $('#myContendPage').tabs('select', title);
+                    } else {
+                        var content = createFrame(url);
+                        $('#myContendPage').tabs('add', {
+                            title: title,
+                            content: content,
+                            closable: true,
+                            tools: [{
+                                    iconCls: 'icon-mini-refresh',
+                                    handler: function () {
+                                        var currTab = $('#myContendPage').tabs('getSelected');
+                                        var url = $(currTab.panel('options').content).attr('src');
+                                        if (url != undefined && currTab.panel('options').title != 'Bienvenido') {
+                                            $('#myContendPage').tabs('update', {
+                                                tab: currTab,
+                                                options: {
+                                                    content: createFrame(url)
+                                                }
+                                            })
+                                        }
                                     }
-                                }
-                            }]
+                                }]
+                        });
+                    }
+                });
+                $("#hplSalir").click(function () {
+                    $.messager.confirm('Confirmar Salida Sistema', 'Est&aacute; seguro de Terminar la Sesi&oacute;n?', function (r) {
+                        if (r) {
+                            window.location = '../cn/logout.php';
+                        }
                     });
-                }
-            }
-
+                });
+            });
             function createFrame(url) {
-                var s = '<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:80%;"></iframe>';
-                return s;
+                return'<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:99%;"></iframe>';
             }
-
         </script>
         <style type="text/css">
             #branding {
@@ -107,8 +107,8 @@ require_once '../cn/nMenu.php';
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
                             <li>Bienvenido - Pancrasio</li>
-                            <li><a href="#">Configuración</a></li>
-                            <li><a href="#">Salir</a></li>
+                            <li><a href="javascript:void(0);" title="Configuración Usuario" src="view/configuracion.php" class="cs-navi-tab" >Configuración</a></li>
+                            <li><a href="javascript:void(0);" id="hplSalir">Salir</a></li>
                         </ul>
                         <br />
                         <span class="small grey">Cantidad de Usuarios conectados: 1</span>

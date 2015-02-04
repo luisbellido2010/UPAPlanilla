@@ -74,9 +74,11 @@
 .icon-edituser{
 	background:url('icons/edituser.gif') no-repeat center center;
 }
-
 .icon-user{
 	background:url('icons/user.png') no-repeat center center;
+}
+.icon-new{
+	background:url('icons/new.png') no-repeat center center;
 }
 .icon-useradd{
 	background:url('icons/user-add.png') no-repeat center center;

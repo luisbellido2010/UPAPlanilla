@@ -9,7 +9,7 @@ class dMenu extends dConexion {
         td_permisos AS p INNER JOIN td_submenusistema AS sm ON p.idtbsume = sm.idtbsume
         INNER JOIN tm_menusistema AS m ON sm.idtbmenu = m.idtbmenu
         WHERE m.statmenu = 'A' AND sm.statsume = 'A' AND p.codiusua = '$coduser'";
-        return $this->getQuery($query);
+        return $this->getQueryList($query);
     }
 
     function dListSubMenus($coduser, $idmenu) {
@@ -19,7 +19,7 @@ class dMenu extends dConexion {
                 ms.statmenu = 'A' AND sms.statsume = 'A' AND pe.codiusua = '$coduser' AND sms.idtbsume=sm.idtbsume)AS total
                 FROM td_submenusistema AS sm
                 WHERE sm.statsume = 'A' AND sm.idtbmenu = $idmenu";
-        return $this->getQuery($query);
+        return $this->getQueryList($query);
     }
 
 }
