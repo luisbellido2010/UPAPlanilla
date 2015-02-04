@@ -8,7 +8,24 @@
         include './view/plugins.php';
         ?>
         <script type="text/javascript">
-            //data-options="selected:true" PARA INDICAR SI SE DEBE SELECCIONAR UN TAB.
+            $(function () {
+                $.getJSON('../cn/nSeguridad/menu.php', function (data) {
+                    $.each(data, function (key, val) {
+                        $("#myacordeon").accordion('add', {
+                            title: val.text,
+                            content: '<a href="javascript:void(0);" src="demo/validatebox/basic.html" class="cs-navi-tab">validatebox</a></p>',
+                            selected: false
+                        });
+                    });
+                });
+                $('.cs-navi-tab').click(function () {
+                    //var $this = $(this);
+                    //var href = $this.attr('src');
+                    //var title = $this.text();
+                    //addTab(title, href);
+                    alertmsg('msg')
+                });
+            });
         </script>
         <style type="text/css">
             #branding {
@@ -18,18 +35,13 @@
                 margin-bottom:0;
                 background:url(img/header-repeat.jpg) repeat-x;
             }
-
             .header-repeat{background:url(img/header-repeat.jpg) repeat-x;}
-
             #branding a{color:#A1EAFF; font-weight:normal;}
             #branding a:hover{color:#fff;}
-
             #branding a:before{content:" | "; color:#fff;}
-
             #branding ul, #branding ul li{margin:0px; padding:0px; }
             #branding li{padding:0px 0px 0px 0px !important;}
             .top-10{margin-top:-10px;}
-
             .floatleft{float:left;}
             .floatright{float:right;}
             .fontwhite{color:#fff;}
@@ -37,11 +49,7 @@
             .inline-ul li{display:inline; color:#fff;}
             .marginleft10{margin-left:10px;}
             .grey{color:#C2C2C2;}
-            .titlelogo{
-                padding-left: 10px;
-                font-weight: bold;
-                font-size: 18px;
-            }
+            .titlelogo{padding-left: 10px; font-weight: bold;font-size: 18px;}
         </style>
     </head>
     <body class="easyui-layout">
@@ -68,24 +76,9 @@
                 </div>
             </div>
         </div>
-        
+
         <div data-options="region:'west',split:false" title="Opciones Generales" style="width:165px;">
-            <div class="easyui-accordion" data-options="fit:true,border:false">
-                <div title="Mantenimientos" style="padding:10px;" data-options="selected:true">
-                    <a href="javascript:void(0);" src="view/personal.php" class="cs-navi-tab">Personal</a></p>
-                </div>
-                <div title="Procesos" style="padding:10px;">
-                    content2
-                </div>
-                <div title="Consultas" style="padding:10px">
-                    content3
-                </div>
-                <div title="Reportes" style="padding:10px">
-                    content4
-                </div>
-                <div title="Seguridad" style="padding:10px">
-                    content5
-                </div>
+            <div class="easyui-accordion" data-options="fit:true,border:false" id="myacordeon">
             </div>
         </div>
         <div id="mainPanle" region="center" border="true" border="false">
