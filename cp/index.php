@@ -151,6 +151,10 @@ require_once '../cn/nMenu.php';
                     <div class="cs-home-remark">
                         <div style="padding-left: 5px;">
                             <p>Mi página de inicio.</p>
+                            <noscript>
+                            Para utilizar las funcionalidades completas de este sitio es necesario tener
+                            JavaScript habilitado. Aquí están las <a href="http://www.enable-javascript.com/es/"                               target="_blank"> instrucciones para habilitar JavaScript en tu navegador web</a>.
+                            </noscript>
                         </div>
                     </div>
                 </div>
