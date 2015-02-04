@@ -6,24 +6,17 @@
         <?php
         $cad = '';
         include './view/plugins.php';
+        require '../cn/nSeguridad/menu.php';
         ?>
         <script type="text/javascript">
-            $(function () {
-                $.getJSON('../cn/nSeguridad/menu.php', function (data) {
-                    $.each(data, function (key, val) {
-                        $("#myacordeon").accordion('add', {
-                            title: val.text,
-                            content: '<a href="javascript:void(0);" src="demo/validatebox/basic.html" class="cs-navi-tab">validatebox</a></p>',
-                            selected: false
-                        });
-                    });
-                });
-                $('.cs-navi-tab').click(function () {
-                    //var $this = $(this);
-                    //var href = $this.attr('src');
+            $(function() {
+                $('.cs-navi-tab').click(function() {
+                    var $this = $(this);
+                    var href = $this.attr('src');
                     //var title = $this.text();
                     //addTab(title, href);
-                    alertmsg('msg')
+                    //alertmsg('msg')
+                    alert(href);
                 });
             });
         </script>
@@ -79,6 +72,15 @@
 
         <div data-options="region:'west',split:false" title="Opciones Generales" style="width:165px;">
             <div class="easyui-accordion" data-options="fit:true,border:false" id="myacordeon">
+                <?php
+                foreach (menus() as $c => $r) {
+                    ?>
+                    <div title="<?php echo $r->text ?>" data-options="selected:<?php echo $r->select == 1 ? 'true' : 'false'; ?>" style="padding:10px;">
+                        <a href="javascript:void(0);" src="<?php echo $r->src ?>" class="cs-navi-tab">easyloader</a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
         <div id="mainPanle" region="center" border="true" border="false">

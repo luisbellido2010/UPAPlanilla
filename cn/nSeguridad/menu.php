@@ -1,14 +1,17 @@
 <?php
 
-$array = array();
+function menus() {
+    $array = array();
+    $array = array(
+        new nMenu(1, 'Personal', '/view/personal.php', 'Personal', 0),
+        new nMenu(2, 'Usuarios', '/view/usuarios.php', 'Usuarios', 0),
+        new nMenu(3, 'Cargos', '/view/cargos.php', 'Cargos', 1),
+        new nMenu(4, 'Planilla', '/view/planilla.php', 'Cargos', 0)
+    );
+    return $array;
+}
 
-$array = array(
-    new nMenu(1, 'Personal', '/view/personal.php', 'Personal'),
-    new nMenu(2, 'Usuarios', '/view/personal.php', 'Usuarios'),
-    new nMenu(3, 'Cargos', '/view/personal.php', 'Cargos')
-);
-
-echo json_encode($array);
+//echo json_encode(menus());
 
 class nMenu {
 
@@ -16,14 +19,15 @@ class nMenu {
     public $text = "";
     public $src = "";
     public $tabs = "";
+    public $select = 0;
 
-    function __construct($id, $text, $src, $tabs) {
+    function __construct($id, $text, $src, $tabs, $select) {
         $this->id = $id;
         $this->text = $text;
         $this->src = $src;
         $this->tabs = $tabs;
+        $this->select = $select;
     }
 
 }
-
 

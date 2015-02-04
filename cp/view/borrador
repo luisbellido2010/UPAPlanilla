@@ -1,0 +1,10 @@
+$.getJSON('../cn/nSeguridad/menu.php', function(data) {
+
+                    $.each(data, function(key, val) {
+                        $("#myacordeon").accordion('add', {
+                            title: val.text,
+                            content: '<a href="javascript:void(0);" src="'+val.src+'" class="cs-navi-tab">validatebox' + key + '</a></p>',
+                            selected: false
+                        });
+                    });
+});
