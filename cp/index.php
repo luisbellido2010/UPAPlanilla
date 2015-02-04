@@ -1,3 +1,6 @@
+<?php
+require_once '../cn/nMenu.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,20 +8,51 @@
         <title>UPA</title>
         <?php
         $cad = '';
-        include './view/plugins.php';
-        require '../cn/nSeguridad/menu.php';
+        include 'view/plugins.php';
         ?>
         <script type="text/javascript">
-            $(function() {
-                $('.cs-navi-tab').click(function() {
+            $(function () {
+                $('.cs-navi-tab').click(function () {
                     var $this = $(this);
                     var href = $this.attr('src');
-                    //var title = $this.text();
-                    //addTab(title, href);
-                    //alertmsg('msg')
-                    alert(href);
+                    var title = $this.attr('title');
+                    addTab(title, href);
                 });
+
             });
+            function addTab(title, url) {
+                if ($('#myContendPage').tabs('exists', title)) {
+                    $('#myContendPage').tabs('select', title);
+                } else {
+                    var content = createFrame(url);
+                    $('#myContendPage').tabs('add', {
+                        title: title,
+                        content: content,
+                        closable: true,
+                        tools: [{
+                                iconCls: 'icon-mini-refresh',
+                                handler: function () {
+                                    var currTab = $('#myContendPage').tabs('getSelected');
+                                    var url = $(currTab.panel('options').content).attr('src');
+                                    if (url != undefined && currTab.panel('options').title != 'Bienvenido') {
+                                        $('#myContendPage').tabs('update', {
+                                            tab: currTab,
+                                            options: {
+                                                content: createFrame(url)
+                                            }
+                                        })
+                                    }
+                                }
+                            }]
+                    });
+                }
+            }
+
+            function createFrame(url) {
+                var s = '<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:80%;"></iframe>';
+                return s;
+            }
+
         </script>
         <style type="text/css">
             #branding {
@@ -31,7 +65,7 @@
             .header-repeat{background:url(img/header-repeat.jpg) repeat-x;}
             #branding a{color:#A1EAFF; font-weight:normal;}
             #branding a:hover{color:#fff;}
-            #branding a:before{content:" | "; color:#fff;}
+            #branding a:before{content:"|"; color:#fff;}
             #branding ul, #branding ul li{margin:0px; padding:0px; }
             #branding li{padding:0px 0px 0px 0px !important;}
             .top-10{margin-top:-10px;}
@@ -43,6 +77,21 @@
             .marginleft10{margin-left:10px;}
             .grey{color:#C2C2C2;}
             .titlelogo{padding-left: 10px; font-weight: bold;font-size: 18px;}
+            a:link {
+                text-decoration: none;
+            }
+            a:visited {
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            a:active {
+                text-decoration: none;
+            }
+            .cs-navi-tab {
+                padding: 5px;
+            }
         </style>
     </head>
     <body class="easyui-layout">
@@ -70,15 +119,28 @@
             </div>
         </div>
 
-        <div data-options="region:'west',split:false" title="Opciones Generales" style="width:165px;">
+        <div data-options="region:'west',split:false" title="Opciones Generales" style="width:170px;">
             <div class="easyui-accordion" data-options="fit:true,border:false" id="myacordeon">
                 <?php
-                foreach (menus() as $c => $r) {
-                    ?>
-                    <div title="<?php echo $r->text ?>" data-options="selected:<?php echo $r->select == 1 ? 'true' : 'false'; ?>" style="padding:10px;">
-                        <a href="javascript:void(0);" src="<?php echo $r->src ?>" class="cs-navi-tab">easyloader</a>
-                    </div>
-                    <?php
+                $array = nListMenus();
+                if ($array != NULL) {
+                    foreach ($array as $c => $r) {
+                        ?>
+                        <div title="<?= $r->nombmenu ?>" style="padding:10px;">
+                            <?php
+                            $arrays = nListSubMenus($r->idtbmenu);
+                            if ($arrays != NULL) {
+                                foreach ($arrays as $v => $rs) {
+                                    ?>
+                                    <a href="javascript:void(0);" title="<?= $rs->notbsume ?>" src="<?= $rs->urlpsume ?>" class="cs-navi-tab">
+                                        <?= $rs->nombsume ?></a></p>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
                 }
                 ?>
             </div>

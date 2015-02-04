@@ -8,3 +8,12 @@ $.getJSON('../cn/nSeguridad/menu.php', function(data) {
                         });
                     });
 });
+
+//    $array = array();
+//    $array = array(
+//        new nMenu(1, 'Personal', '/view/personal.php', 'Personal', 0),
+//        new nMenu(2, 'Usuarios', '/view/usuarios.php', 'Usuarios', 0),
+//        new nMenu(3, 'Cargos', '/view/cargos.php', 'Cargos', 1),
+//        new nMenu(4, 'Planilla', '/view/planilla.php', 'Cargos', 0)
+//    );
+//    return $array;

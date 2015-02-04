@@ -2,6 +2,6 @@
 
 define("hostname", "localhost");
 define("dbuser", "root");
-define("dbpass", "");
-define("dbname", "bdnotas");
+define("dbpass", "123");
+define("dbname", "bd_planillaupa");
 ?>
