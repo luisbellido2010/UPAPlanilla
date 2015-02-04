@@ -16,4 +16,9 @@ class dCargos extends dConexion {
         return $this->getQuery($query);
     }
 
+    function dUpdateCargo($idtbcarg, $pnombcarg, $pstatcarg) {
+        $query = "UPDATE ta_cargos SET nombcarg = '$pnombcarg', statcarg = '$pstatcarg' WHERE idtbcarg = $idtbcarg";
+        return $this->getQuery($query);
+    }
+
 }

@@ -30,7 +30,7 @@
                             text: 'Cancelar'
                         });
                         $('#frmCargo').form('clear');
-                        texboxfocus('nombcarg');
+                        texboxfocus('#nombcarg');
                         $('#btnSav').linkbutton('enable');
                     } else {
                         newproc();
@@ -40,7 +40,7 @@
                     $('#dlgListCargo').dialog('open');
                     $('#tbListaCargo').datagrid('reload');
                 });
-                
+
                 $('#tbListaCargo').datagrid({
                     url: '../../cn/nCargo/listar.php',
                     singleSelect: true,
@@ -48,9 +48,28 @@
                             {field: 'idtbcarg', title: 'Id', width: 50},
                             {field: 'nombcarg', title: 'Nombre', width: 300},
                             {field: 'statcarg', title: 'Estado', width: 60, align: 'center'}
-                        ]]
+                        ]],
+                    onDblClickRow: function (index, row) {
+                        editar();
+                    }
                 });
             });
+            function editar() {
+                var row = $('#tbListaCargo').datagrid('getSelected');
+                if (row) {
+                    $('#frmCargo').form('load', row);
+                    urlpag = "../../cn/nCargo/actualizar.php";
+                    $("#btnNew").linkbutton({
+                        iconCls: 'icon-cancel',
+                        text: 'Cancelar'
+                    });
+                    texboxfocus('#nombcarg');
+                    $('#btnSav').linkbutton('enable');
+                    $('#dlgListCargo').dialog('close');
+                } else {
+                    alertmsg("Seleccione una fila")
+                }
+            }
             var urlpag = "";
             function procesardatos() {
                 $('#frmCargo').form('submit', {
@@ -76,7 +95,6 @@
                 });
                 $('#btnSav').linkbutton('disable');
             }
-
         </script>
     </head>
     <body>
@@ -89,10 +107,11 @@
                     <a href="javascript:void(0)" id="btnSea" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">Buscar</a>
                     <div id="p" class="easyui-panel" title="" style="width:100%;height:184px;padding:10px;">
                         <form id="frmCargo" method="post" data-options="novalidate:true" class="easyui-form">
+                            <input type="hidden" id="idtbcarg" name="idtbcarg" value="">
                             <table style="width: 100%" cellpadding="10">
                                 <tr>
                                     <td>Nombre:</td>
-                                    <td><input class="easyui-textbox" style="width:250px;height:22px;" maxlength="4" name="nombcarg" id="nombcarg" data-options="required:true,validType:'length[1,45]'" /></td>
+                                    <td><input name="nombcarg" id="nombcarg" class="easyui-textbox" style="width:250px;height:22px;" maxlength="4" data-options="required:true,validType:'length[1,45]'" /></td>
                                 </tr>
                                 <tr>
                                     <td>Estado:</td>
@@ -109,7 +128,7 @@
             <table id="tbListaCargo" style="width: 100%; height: 92%"></table>
         </div>
         <div id="dlg-buttonsListCargo">
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="alert('save');">Aceptar</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="editar()">Aceptar</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="$('#dlgListCargo').dialog('close');">Cancelar</a>
         </div>
     </body>
