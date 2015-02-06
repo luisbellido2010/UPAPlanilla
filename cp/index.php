@@ -99,8 +99,8 @@ require_once '../cn/nMenu.php';
             <div id="branding">
                 <div class="floatleft">
                     <img src="js/jqueryeasy/themes/icons/system.png" alt="Logo" />
-                    <label class="grey titlelogo">MI EMPRESA</label>
-                </div>
+                    <label class="grey titlelogo">MI EMPRESA</label> 
+                </div> 
                 <div class="floatright">
                     <div class="floatleft">
                         <img src="img/img-profile.jpg" alt="Profile Pic" /></div>

@@ -3,6 +3,23 @@
 include '../cd/dMenu.php';
 include 'validatorinput.php';
 $usuarioonline = "LBELLIDOT";
+
+function nListMenu() {
+    $array = array();
+    try {
+        $obj = new dMenu();
+        $obj->dListMenu();
+        while ($r = $obj->getDataR()) {
+            $array[] = new MenuSis($r->idtbmenu, $r->nombmenu, 0);
+        }
+    } catch (ErrorException $er) {
+        $array = NULL;
+    } catch (Exception $er) {
+        $array = NULL;
+    }
+    return $array;
+}
+
 function nListMenus() {
     global $usuarioonline;
     $array = array();
@@ -20,23 +37,31 @@ function nListMenus() {
     return $array;
 }
 
-//$a = 1;
-//$b = 2;
-//
-//function Suma() {
-//    global $a, $b;
-//    $b = $a + $b;
-//}
-//
-//Suma();
-//echo $b;
-
+//echo json_encode(nListMenus());
 function nListSubMenus($idmenu) {
     global $usuarioonline;
     $array = array();
     try {
         $obj = new dMenu();
-        $obj->dListSubMenus($usuarioonline,$idmenu);
+        $obj->dListSubMenus($usuarioonline, $idmenu);
+        while ($r = $obj->getDataR()) {
+            $array[] = new SubmenuSis(
+                    $r->idtbsume, $r->nombsume, $r->urlpsume, $r->notbsume, $r->total
+            );
+        }
+    } catch (ErrorException $er) {
+        $array = NULL;
+    } catch (Exception $er) {
+        $array = NULL;
+    }
+    return $array;
+}
+
+function nListSubMenusXUsuario($idmenu, $usuarioonline) {
+    $array = array();
+    try {
+        $obj = new dMenu();
+        $obj->dListSubMenus($usuarioonline, $idmenu);
         while ($r = $obj->getDataR()) {
             $array[] = new SubmenuSis(
                     $r->idtbsume, $r->nombsume, $r->urlpsume, $r->notbsume, $r->total

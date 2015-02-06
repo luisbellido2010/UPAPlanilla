@@ -4,6 +4,12 @@ require 'dConexion.php';
 
 class dMenu extends dConexion {
 
+    function dListMenu() {
+        $query = "SELECT m.idtbmenu, m.nombmenu FROM tm_menusistema m WHERE m.statmenu='A' and
+                 (SELECT count(sm.idtbsume) FROM td_submenusistema sm where sm.idtbmenu=m.idtbmenu)>0;";
+        return $this->getQueryList($query);
+    }
+
     function dListMenus($coduser) {
         $query = "SELECT DISTINCT m.idtbmenu,m.nombmenu FROM
         td_permisos AS p INNER JOIN td_submenusistema AS sm ON p.idtbsume = sm.idtbsume

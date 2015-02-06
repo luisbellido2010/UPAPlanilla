@@ -15,3 +15,7 @@ function alertmsg(msg) {
 function texboxfocus(idcomponent) {
     $(idcomponent).next().find('input').focus();
 }
+
+function urlIconStatus(value) {
+    return 'img/' + (value == 'I' ? 'cancel' : 'accept') + '.png';
+}
