@@ -133,7 +133,8 @@ require_once '../cn/nMenu.php';
                                 foreach ($arrays as $v => $rs) {
                                     ?>
                                     <a href="javascript:void(0);" title="<?= $rs->notbsume ?>" src="<?= $rs->urlpsume ?>" class="cs-navi-tab">
-                                        <?= $rs->nombsume ?></a></p>
+                                        <?= $rs->nombsume ?>
+                                    </a></p>
                                     <?php
                                 }
                             }
